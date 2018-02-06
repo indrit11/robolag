@@ -17,7 +17,7 @@ import jssc.SerialPortException;
 @SuppressWarnings("serial")
 public class ButtonSet extends JPanel implements ActionListener, SerialPortEventListener
 {
-	SerialPort s
+	SerialPort s;
 	JPanel top;
 	JPanel bottom;
 	JLabel lbl;

@@ -41,23 +41,27 @@ public class SerialArm implements ActionListener, SerialPortEventListener
 	
 	public static void main(String[] args) throws Exception 
 	{
-		 ServerSocket serverSocket;
-        
-            try {
-            serverSocket = new ServerSocket(5556);
-        
-            while(true) {
-                Socket s = 
-                        serverSocket.accept();
-                BufferedReader in = 
-                        new BufferedReader(
-                                new InputStreamReader(
-                                        s.getInputStream()));
-                PrintWriter out = new PrintWriter(
-                        s.getOutputStream());
-               } }catch(IOException e) {
-                    e.printStackTrace();
-                       }
+		 try {
+
+         Socket skt = new Socket("192.168.0.30", 1234);
+
+         BufferedReader in = new BufferedReader(new 					InputStreamReader(skt.getInputStream()));
+
+         System.out.print("Received string: '");
+
+         while (!in.ready()) {}
+
+         System.out.println(in.readLine()); // Read one line and 		output it
+
+         System.out.print("'\n");
+         in.close();
+
+      }catch(Exception e) {
+
+         System.out.print("Connection Failed\n");
+         e.printStackTrace();
+
+      }
                
                 SerialArm a = new SerialArm();
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
