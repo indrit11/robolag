@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class SequenceCommand extends JPanel implements ActionListener 
 {
+    //Diese Klasse macht eine Befehl Vorschau und ruft die gleiche Befehle nochmal
+    //Die Sequncer haben wir gemacht, weil dieser Arm die Funktionen eines Lagerhalters macht.
+    //Die Funktion des Lagerhalters muss Automatisiert sein und die Sequencer macht die automatisch nachdem wir die Befehle 
+    //eingefügt haben und mit dem Send Button geprüft haben.
 	JLabel label;
 	JLabel veryLabel;
 	JLabel directionLabel;
@@ -75,7 +79,11 @@ public class SequenceCommand extends JPanel implements ActionListener
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) 
+	public void actionPerformed(ActionEvent arg0) //Nimmt die SequenceOption Anderungen und macht denen besser.
+                                                      //Es gibt einigen getParent , getComponents(ruft die Objekten die wir erstellen haben) 
+                                                      //und getSource Methoden die den Sequencer GUI bessere Struktur zu haben.
+
+
 	{
 		if(arg0.getSource() == x)
 		{
@@ -119,7 +127,7 @@ public class SequenceCommand extends JPanel implements ActionListener
 		SequenceOption.UpdateCommand();
 	}
 
-	public void buttons()
+	public void buttons()//Macht einen if else zu sehen ob die Objekten geruft sind.
 	{
 		if(getParent().getComponent(0) == this) { up.setEnabled(false); }
 		else {up.setEnabled(true); }
