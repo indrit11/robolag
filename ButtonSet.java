@@ -114,7 +114,7 @@ public class ButtonSet extends JPanel implements ActionListener, SerialPortEvent
 		try {
 			System.out.println(s.readString(arg0.getEventValue()));
 		} catch (SerialPortException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
