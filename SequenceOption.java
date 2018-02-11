@@ -108,7 +108,7 @@ public class SequenceOption extends JPanel implements ActionListener
 		topIn.add(very);
 		topIn.add(Box.createRigidArea(new Dimension(5,0)));
 		add = new JButton("Add");
-		add.addActionListener(this);
+		add.addActionListener(this);                  //stellt die bevorzugte Größe von Buttons. Hier wird die Länge und die Breite von Buttons gegeben.
 		add.setPreferredSize(new Dimension(70, 30));
 		topIn.add(add);
                 add = new JButton("Add");
@@ -116,7 +116,7 @@ public class SequenceOption extends JPanel implements ActionListener
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) 
+	public void actionPerformed(ActionEvent arg0) //Nimmt Buttons und Labels von ActionListener und gibt Positionen fur denen
 	{
 		if((bottom.getComponentCount() == 0 && arg0.getSource() != add) || SerialArm.serial == null)
 		{
@@ -176,17 +176,17 @@ public class SequenceOption extends JPanel implements ActionListener
 		}
 	}
 
-	void Send()
+	void Send()//Es sendet einen String in GUI und macht einen Exception.
 	{
 		try {
 			SerialArm.serial.writeString(UpdateCommand());
 		} catch (SerialPortException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
 
-	static void fixButtons()
+	static void fixButtons()//Es selektiert alle GUI Komponenten und buttons gibt zum Sequencer.
 	{
 		for (Component c : bottom.getComponents())
 		{
@@ -196,7 +196,7 @@ public class SequenceOption extends JPanel implements ActionListener
 		SerialArm.sequencer.pack();
 	}
 
-	static void moveComp(int index, int amount)
+	static void moveComp(int index, int amount)//Es bewegt die Komponenten.
 	{
 		Component[] comps = bottom.getComponents();
 		bottom.removeAll();
@@ -213,7 +213,7 @@ public class SequenceOption extends JPanel implements ActionListener
 		System.out.println("Move");
 	}
 
-	static String UpdateCommand()
+	static String UpdateCommand()//Es updated die Kommands von Komponenten.
 	{
 		int count = bottom.getComponentCount();
 		System.out.println(count);
