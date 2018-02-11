@@ -63,8 +63,8 @@ public class ButtonSet extends JPanel implements ActionListener, SerialPortEvent
 		veryLeft = new JButton(vLeft);
 		veryLeft.addActionListener(this);
 		left = new JButton(leftButton);
-		left.addActionListener(this);
-		right = new JButton(rightButton);
+		left.addActionListener(this);     //Mit ButtonSet verbessern wir die Struktur von Buttons, Labels usw verbessert. 
+		right = new JButton(rightButton); //Die Position von Buttons gegeben Direktion nach links nach rechts oben oder unten.
 		right.addActionListener(this);
 		veryRight = new JButton(vRight);
 		veryRight.addActionListener(this);
@@ -77,10 +77,16 @@ public class ButtonSet extends JPanel implements ActionListener, SerialPortEvent
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e) //Diese Methode macht if else Anweisung wo die Position 
+                                                   //von Buttons eingegeben wird z.b right ,left,very left usw.
+                                                   //Es gibt auch ein Exception die sendet einen String zu Arduino.
 	{
 		String action;
-		if(e.getSource().equals(left))
+		if(e.getSource().equals(left))  //getSource
+                                                //Wird von der EventObject-Klasse angegeben, für die ActionEvent ein Kind ist 
+                                               //(via java.awt.AWTEvent). 
+                                                //Dadurch erhalten Sie einen Verweis auf das Objekt, von dem das Ereignis stammt.
+
 		{
 			action = lAction;
 		}
@@ -109,7 +115,7 @@ public class ButtonSet extends JPanel implements ActionListener, SerialPortEvent
 	}
 	
 	@Override
-	public void serialEvent(SerialPortEvent arg0) 
+	public void serialEvent(SerialPortEvent arg0) //Macht ein Exception die liest den String von Arduino oder macht ein error
 	{
 		try {
 			System.out.println(s.readString(arg0.getEventValue()));
